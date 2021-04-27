@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MyItem.qml</file>
+        <file>CSize.qml</file>
+        <file>ComponentRepeater.qml</file>
+        <file>CommonPanelPopup.qml</file>
+        <file>MediaList.qml</file>
+        <file>ListViewAnimation.qml</file>
+        <file>DelegateAnimation.qml</file>
+        <file>Box.qml</file>
+        <file>DragItem.qml</file>
+        <file>DropItem.qml</file>
+        <file>FgMedia.qml</file>
+    </qresource>
+</RCC>
