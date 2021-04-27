@@ -14,7 +14,7 @@ Item {
     width: (displayHeight === 1080?540:524) * ratio; height: (displayHeight)*ratio
 
     /*============   PROPERTY   /*============*/
-    property string tileName: "Media"
+    property string tileName: mediaModel.tileName
 
     property string title: "title"
 
@@ -32,17 +32,18 @@ Item {
     // Left buttton
     property string sourceButton1: "1" // Left buttton
     property bool   isButton1Enable: true
-    property int    isButton1State: 1
+    property int    stateButton1: 10
 
     // Center buttton
     property string sourceButton2: "2" // Center buttton
     property bool   isButton2Enable: true
-    property int    isButton2State: 1   // [PLAY, PAUSE, MUTE, UN_MUTE,...]
+    property int    stateButton2: 20   // [PLAY, PAUSE, MUTE, UN_MUTE,...]
 
     // Right buttton
     property string sourceButton3: "3" // Right buttton
     property bool   isButton3Enable: true
-    property int    isButton3State: 1   // [FARVORITE, UPNEXT,...]
+    property int    stateButton3: 30   // [FARVORITE, UPNEXT,...]
+
     /* =========== TILE NAME =========== */
     Text {
         anchors.top: parent.top
@@ -138,13 +139,13 @@ Item {
             width: gridButton.width / gridButton.columns
             height: gridButton.height
             CSize {
-                content: ""
+                content: tile.sourceButton1
             }
 
             MouseArea {
                 anchors.centerIn: button1
                 CSize {
-                    content: sourceButton1
+                    content: tile.stateButton1
                 }
                 id: lButtonMouseArea
                 width: buttonWidth
@@ -180,7 +181,7 @@ Item {
             MouseArea {
                 anchors.centerIn: button2
                 CSize {
-                    content: sourceButton2
+                    content: tile.stateButton2
                 }
                 id: cButtonMouseArea
                 width: buttonWidth
@@ -214,12 +215,12 @@ Item {
             width: gridButton.width / gridButton.columns
             height: gridButton.height
             CSize {
-                content: ""
+                content: tile.sourceButton3
             }
             MouseArea {
                 anchors.centerIn: button3
                 CSize {
-                    content: sourceButton3
+                    content: tile.stateButton3
                 }
 
                 id: rButtonMouseArea
