@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     animalmodel.cpp \
-    mediatilemodel.cpp
+    mediatilemodel.cpp \
+    mediatilecontroller.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,4 +35,5 @@ DISTFILES +=
 
 HEADERS += \
     animalmodel.h \
-    mediatilemodel.h
+    mediatilemodel.h \
+    mediatilecontroller.h

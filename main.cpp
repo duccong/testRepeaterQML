@@ -4,6 +4,7 @@
 #include <QQmlContext>
 #include <QObject>
 #include <mediatilemodel.h>
+#include <mediatilecontroller.h>
 
 int main(int argc, char *argv[])
 {
@@ -29,14 +30,15 @@ int main(int argc, char *argv[])
     QQmlContext* m_content = engine.rootContext();
     m_content->setContextProperty("animalModel", animalModel);
 
-    MediaTileModel* mediaModel = new MediaTileModel();
-    m_content->setContextProperty("mediaModel", mediaModel);
+    MediaTileController* mediaTileController = MediaTileController::getInstance();
+    m_content->setContextProperty("mediaTileController", mediaTileController);
+    m_content->setContextProperty("mediaModel", mediaTileController->getModel());
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     QObject* main_win = engine.rootObjects().first();
 //    QObject::connect(main_win, SIGNAL(mainClicked(QVariant,QVariant)), animalModel, SLOT(onMainClicked(QVariant,QVariant)));
-    QObject::connect(main_win, SIGNAL(mainClicked(QVariant,QVariant)), mediaModel, SLOT(onMainClicked(QVariant,QVariant)));
+//    QObject::connect(main_win, SIGNAL(mainClicked(QVariant,QVariant)), mediaTileController->getModel(), SLOT(onMainClicked(QVariant,QVariant)));
 
     if (engine.rootObjects().isEmpty())
         return -1;

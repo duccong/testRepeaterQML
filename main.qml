@@ -52,7 +52,7 @@ Window {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                console.log("_mouseAreaAdd2 onClicked: 1: ")
+                console.log("_mouseAreaAdd2 onClicked: 1: " + _mouseAreaAdd2.Window.title)
                 mainClicked(1,2)
                 /*
 //                console.log("itemName at 1: " + normalListView.contentItem.children[1].itemName)
