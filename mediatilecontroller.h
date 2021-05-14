@@ -2,7 +2,32 @@
 #define MEDIATILECONTROLLER_H
 #include "mediatilemodel.h"
 #include "QObject"
+namespace MediaInfo {
+enum MediaSourceId
+{
+    AM = 0,
+    FM,
+    DAB,
+    SXM,
+    CARPLAY,
+    ANDROID_AUTO,
+    USB,
+    BT,
+    ONLINE_MEDIA
 
+};
+/* ====== SOURCE ONLINE MEDIA =====*/
+enum MediaProviderId
+{
+    DEEZER  = 0,
+    TUNE_IN,
+    SPOTIFY,
+};
+}
+/* ====== SOURCE USB =====*/
+/* ====== SOURCE BT =====*/
+
+using namespace MediaInfo;
 class MediaTileController : public QObject
 {
     Q_OBJECT
@@ -12,55 +37,25 @@ public:
 public:
     static MediaTileController *getInstance();
     MediaTileModel *getModel();
-    void setTitleName(QString strSourceId, QString strProviderId, QString _title);
+
+    template<class T> T* interface() {
+        static T* iface = nullptr;
+        if(!iface) {
+            //iface = new T(instance()->baseListener());
+            iface = new T();
+            qDebug("interface provider is created : append : '%s' ", iface->metaObject()->className());
+            //append(iface);
+        }
+        return iface;
+    }
+
+public slots:
+    void onMainClicked(QVariant var1, QVariant var2);
 
 private:
-    MediaTileModel *m_model;
+    MediaTileModel *m_tileModel;
     MediaSourceId   m_currentSourceId;
     MediaProviderId m_currentProviderId;
-
-    enum MediaSourceId
-    {
-        AM = 0,
-        FM,
-        DAB,
-        SXM,
-        CARPLAY,
-        ANDROID_AUTO,
-        USB,
-        BT,
-        ONLINE_MEDIA
-
-    };
-
-    QMap<QString, int> mediaSourceIdMap = {
-        {"AM"           ,  AM           },
-        {"FM"           ,  FM           },
-        {"DAB"          ,  DAB          },
-        {"SXM"          ,  SXM          },
-        {"CARPLAY"      ,  CARPLAY      },
-        {"ANDROID_AUTO" ,  ANDROID_AUTO },
-        {"USB"          ,  USB          },
-        {"BT"           ,  BT           },
-        {"ONLINE_MEDIA" ,  ONLINE_MEDIA }
-    };
-
-    /* ====== SOURCE ONLINE MEDIA =====*/
-    enum MediaProviderId
-    {
-        DEEZER  = 0,
-        TUNE_IN,
-        SPOTIFY,
-    };
-
-    QMap<QString, int> mediaProviderIdMap = {
-        {"deezer" , DEEZER },
-        {"tunein" , TUNE_IN},
-        {"spotify", SPOTIFY}
-    };
-    /* ====== SOURCE USB =====*/
-    /* ====== SOURCE BT =====*/
-
 };
 
 #endif // MEDIATILECONTROLLER_H

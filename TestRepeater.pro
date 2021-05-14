@@ -16,7 +16,8 @@ SOURCES += \
         main.cpp \
     animalmodel.cpp \
     mediatilemodel.cpp \
-    mediatilecontroller.cpp
+    mediatilecontroller.cpp \
+    mediainfobasemodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -36,4 +37,5 @@ DISTFILES +=
 HEADERS += \
     animalmodel.h \
     mediatilemodel.h \
-    mediatilecontroller.h
+    mediatilecontroller.h \
+    mediainfobasemodel.h

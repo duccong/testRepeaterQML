@@ -15,7 +15,7 @@ Item {
     width: (displayHeight === 1080?540:524) * ratio; height: (displayHeight)*ratio
 
     /*============   PROPERTY   /*============*/
-    property string tileName: mediaModel.tileName
+    property string tileName: mediaModel.mediaInfo.tileName
 
     property string title: "title"
 

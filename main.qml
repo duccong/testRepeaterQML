@@ -51,9 +51,19 @@ Window {
         }
         MouseArea {
             anchors.fill: parent
+            property bool testValue: false
             onClicked: {
                 console.log("_mouseAreaAdd2 onClicked: 1: " + _mouseAreaAdd2.Window.title)
-                mainClicked(1,2)
+                if (testValue) {
+
+                    mainClicked(0,2)
+                } else {
+
+                    mainClicked(1,2)
+                }
+                testValue = !testValue
+
+                console.log("_mouseAreaAdd2 : " + mediaModel.tileName)
                 /*
 //                console.log("itemName at 1: " + normalListView.contentItem.children[1].itemName)
 //                if (!test1) {

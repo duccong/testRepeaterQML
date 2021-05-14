@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
     QObject* main_win = engine.rootObjects().first();
 //    QObject::connect(main_win, SIGNAL(mainClicked(QVariant,QVariant)), animalModel, SLOT(onMainClicked(QVariant,QVariant)));
-//    QObject::connect(main_win, SIGNAL(mainClicked(QVariant,QVariant)), mediaTileController->getModel(), SLOT(onMainClicked(QVariant,QVariant)));
+    QObject::connect(main_win, SIGNAL(mainClicked(QVariant,QVariant)), mediaTileController, SLOT(onMainClicked(QVariant,QVariant)));
 
     if (engine.rootObjects().isEmpty())
         return -1;

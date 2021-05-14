@@ -2,31 +2,32 @@
 
 MediaTileModel::MediaTileModel(QObject *_parent) : QObject(_parent)
 {
-
+    m_mediaInfo = new MediaInfoBaseModel();
 }
 
-QString MediaTileModel::tileName()
+MediaTileModel::~MediaTileModel()
 {
-    return m_tileName;
+    delete m_mediaInfo;
+    m_mediaInfo = NULL;
+}
+
+MediaInfoBaseModel *MediaTileModel::mediaInfo()
+{
+    if (m_mediaInfo == nullptr) {
+        return new MediaInfoBaseModel();
+    }
+    return m_mediaInfo;
 }
 
 bool test = true;
 void MediaTileModel::onMainClicked(QVariant var1, QVariant var2)
 {
     Q_UNUSED(var2)
-    if (test) {
-        setTileName(var1.toString());
-    } else {
-        setTileName("Media");
-    }
-    test = !test;
 
 }
 
-void MediaTileModel::setTileName(QString value)
+void MediaTileModel::setMediaInfo(MediaInfoBaseModel *value)
 {
-    if (m_tileName != value) {
-        m_tileName = value;
-        emit tileNameChanged();
-    }
+    m_mediaInfo = value;
+    emit mediaInfoChanged();
 }
